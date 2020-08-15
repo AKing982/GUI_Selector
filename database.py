@@ -8,7 +8,7 @@ class DataGUI:
 
         self.main_window = Tk()
         self.main_window.title('Records')
-        self.main_window.geometry('340x300')
+        self.main_window.geometry('400x300')
 
         # Create a database or connect to it
         self.conn = sqlite3.connect('contact_books.db')
@@ -166,6 +166,39 @@ class DataGUI:
 
         # Close the connection
         self.conn3.close()
+
+    def update_records(self):
+        # Create a connection
+        self.conn5 = sqlite3.connect('contact_books.db')
+
+        # Create a cursor
+        self.c5 = self.conn5.cursor()
+
+        # Update the record
+        self.c5.execute("""UPDATE contact_books SET
+                        full_name = :full,
+                        email = :email,
+                        phone = :phone,
+                        zipcode = :zipcode,
+                        state = :state,
+                        student = :student
+                        
+                        WHERE oid = :oid""",
+                        {
+                            'full_name': self.full_name_entry_edit.get(),
+                            'email': self.email_entry_edit.get(),
+                            'phone': self.phone_entry_edit.get(),
+                            'zipcode': self.zipcode_entry_edit.get(),
+                            'state': self.state_entry_edit.get(),
+                            'student': self.student_entry_edit.get(),
+                            'oid': self.record_id
+                        })
+
+        # Commit changes
+        self.conn5.commit()
+
+        # Close the connection
+        self.conn5.close()
 
     def edit(self):
 
