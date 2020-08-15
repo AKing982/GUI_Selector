@@ -9,13 +9,13 @@ class DataGUI:
         self.main_window = Tk()
 
         # Create a database or connect to it
-        self.conn = sqlite3.connect('contacts.db')
+        self.conn = sqlite3.connect('contact_books.db')
 
         # Create a cursor
         self.c = self.conn.cursor()
 
     # Create table
-        self.c.execute('''CREATE TABLE IF NOT EXISTS contacts (
+        self.c.execute('''CREATE TABLE IF NOT EXISTS contact_books (
                  full_name text,
                  email text,
                 phone integer,
@@ -83,19 +83,19 @@ class DataGUI:
 
     def submit(self):
         # Create a database or connect to one
-        self.conn1 = sqlite3.connect('contacts.db')
+        self.conn1 = sqlite3.connect('contact_books.db')
 
         self.c1 = self.conn1.cursor()
 
         # Create table
-        self.c1.execute('''CREATE TABLE IF NOT EXISTS contacts (
+        self.c1.execute('''CREATE TABLE IF NOT EXISTS contact_books (
                          full_name text,
                          email text,
                         phone integer,
                          zipcode integer,
                          student text)''')
 
-        self.c1.execute("INSERT INTO contacts VALUES (:full_name, :email, :phone, :zipcode, :student)",
+        self.c1.execute("INSERT INTO contact_books VALUES (:full_name, :email, :phone, :zipcode, :student)",
                     {
                         'full_name': self.full_name_entry.get(),
                         'email': self.email_entry.get(),
@@ -109,11 +109,11 @@ class DataGUI:
 
         # Create Query
     def query(self):
-        self.conn2 = sqlite3.connect('contacts.db')
+        self.conn2 = sqlite3.connect('contact_books.db')
 
         self.c2 = self.conn2.cursor()
 
-        self.c2.execute("SELECT *, oid FROM contacts")
+        self.c2.execute("SELECT *, oid FROM contact_books")
         records = self.c2.fetchall()
         print(records)
 
