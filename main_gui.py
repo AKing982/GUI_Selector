@@ -1,6 +1,9 @@
 import tkinter, sqlite3
 from tkinter import Frame, Label, Tk, Radiobutton, Toplevel, Entry, Button
 import tkinter.messagebox
+import database
+import mp3_player
+import calculator
 
 
 class GUIApp:
@@ -24,9 +27,9 @@ class GUIApp:
         self.radio_var.set(1)
 
         # Create the RadioButton widgets in the rb1
-        self.rb1 = Radiobutton(self.mid_frame, text='Contact Book', variable=self.radio_var,value=1)
-        self.rb2 = Radiobutton(self.mid_frame, text='MP3  Player', variable=self.radio_var,value=2)
-        self.rb3 = Radiobutton(self.mid_frame, text='Calculator', variable=self.radio_var, value=3)
+        self.rb1 = Radiobutton(self.mid_frame, text='Contact Book', variable=self.radio_var,value=1, command=self.open_contacts)
+        self.rb2 = Radiobutton(self.mid_frame, text='MP3  Player', variable=self.radio_var,value=2, command=self.open_mp3)
+        self.rb3 = Radiobutton(self.mid_frame, text='Calculator', variable=self.radio_var, value=3, command=self.open_calc)
 
         # Pack the radiobuttons
         self.rb1.pack()
@@ -40,6 +43,17 @@ class GUIApp:
 
         # Enter the tkinter mainloop
         tkinter.mainloop()
+
+    def open_contacts(self):
+        self.contacts = database.DataGUI().main_window
+
+    # Method for opening mp3 player
+    def open_mp3(self):
+        self.player = mp3_player.MP3().main_window
+
+    # Method for opening calculator
+    def open_calc(self):
+        self.calculator = calculator.CalcGUI().main_window
 
 
 
