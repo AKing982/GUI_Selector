@@ -6,7 +6,7 @@ class CalcGUI:
 
         # Create the main window for our calculator app
         self.main_window = Tk()
-        self.main_window.geometry('500x200')
+        self.main_window.geometry('500x400')
         self.main_window.title('Calculator')
 
         # Create the Five frames
@@ -16,11 +16,8 @@ class CalcGUI:
         self.btn_row3_frame = Frame(self.main_window)
         self.btn_row4_frame = Frame(self.main_window)
 
-        self.data = StringVar()
-        self.input_label = Label(self.entry_frame, text='Label', anchor = SE, font=("Verdana", 20), textvariable=self.data)
-        self.input_label.pack(expand=True, fill="both")
-
-        self.calc_entry = Entry(self.entry_frame, font=("Verdana", 20), relief=GROOVE, border=0, justify=RIGHT)
+        self.calc_entry = Entry(self.entry_frame, font=("Verdana", 20), relief=GROOVE, border=0, justify=RIGHT,
+                                background="#ffffff", fg="#000000")
         self.calc_entry.pack(ipadx=200, ipady=40)
 
         # Create buttons 7, 8, 9, +
@@ -104,17 +101,18 @@ class CalcGUI:
 
     def Divide(self):
         self.first_num = self.calc_entry.get()
-        self.math = '/'
-        self.f_num = int(self.first_num)
         self.calc_entry.delete(0, END)
+        self.math = '/'
+        self.result = self.first_num + self.math
+        self.calc_entry.insert(0, self.result)
 
     def Multiply(self):
         # Get the number
         self.first_num = self.calc_entry.get()
-        self.math = '*'
-        self.first_num = self.first_num + "*"
-        self.f_num = int(self.first_num)
         self.calc_entry.delete(0, END)
+        self.math = '*'
+        self.result = self.first_num + self.math
+        self.calc_entry.insert(0, self.result)
 
     def ButtonEqual(self):
         self.second_num = self.calc_entry.get()
@@ -138,8 +136,6 @@ class CalcGUI:
 
         # If subtraction is being done
         elif self.math == '-':
-            #self.new = self.result[:self.result.find("-")]
-            #self.new_val = int(self.new)
 
             self.new_num = self.second_num.split("-")
 
@@ -151,12 +147,20 @@ class CalcGUI:
             self.calc_entry.insert(0, self.subtract)
 
         elif self.math == '*':
-            self.multiply = self.f_num * int(self.second_num)
+            self.new_num = self.second_num.split("*")
+
+            self.mult_list = [int(i) for i in self.new_num]
+
+            self.multiply = 1
+            for i in self.mult_list:
+                self.multiply = self.multiply * i
+
             self.calc_entry.insert(0, self.multiply)
 
         elif self.math == '/':
             self.sum = self.f_num / int(self.second_num)
             self.calc_entry.insert(0, self.sum)
+
 
 if __name__ == '__main__':
 
