@@ -15,16 +15,28 @@ class CalcGUI:
         self.btn_row2_frame = Frame(self.main_window)
         self.btn_row3_frame = Frame(self.main_window)
         self.btn_row4_frame = Frame(self.main_window)
+        self.btn_row5_frame = Frame(self.main_window)
 
         self.calc_entry = Entry(self.entry_frame, font=("Verdana", 20), relief=GROOVE, border=0, justify=RIGHT,
                                 background="#ffffff", fg="#000000")
         self.calc_entry.pack(ipadx=200, ipady=40)
 
+        # Create Buttons 1/x, x^2, square root, and /
+        self.btn_recip = Button(self.btn_row1_frame, text='1/x', font=('Verdana', 20), relief=GROOVE, border=0, width=5, padx=10, pady=10, justify=LEFT, command=lambda: self.Reciprocal())
+        self.btn_num_square = Button(self.btn_row1_frame, text='x\u00B2', font=('Verdana', 20), relief=GROOVE, border=0, width=5, padx=10, pady=10, command=lambda: self.num_sq())
+        self.btn_square_root = Button(self.btn_row1_frame, text='\u221A', font=('Verdana', 20), relief=GROOVE, border=0, width=5, padx=10, pady=10, command=lambda: self.sq_r())
+        self.btn_remainder = Button(self.btn_row1_frame, text='%', font=('Verdana', 20), relief=GROOVE, border=0, width=5, padx=10, pady=10, command=lambda: self.Remainder())
+
+        self.btn_recip.pack(side='left')
+        self.btn_num_square.pack(side='left')
+        self.btn_square_root.pack(side='left')
+        self.btn_remainder.pack(side='left')
+
         # Create buttons 7, 8, 9, +
-        self.btn_7 = Button(self.btn_row1_frame, text='7', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick(7))
-        self.btn_8 = Button(self.btn_row1_frame, text='8', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(8))
-        self.btn_9 = Button(self.btn_row1_frame, text='9', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(9))
-        self.btn_plus = Button(self.btn_row1_frame, text='+', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.add())
+        self.btn_7 = Button(self.btn_row2_frame, text='7', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick(7))
+        self.btn_8 = Button(self.btn_row2_frame, text='8', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(8))
+        self.btn_9 = Button(self.btn_row2_frame, text='9', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(9))
+        self.btn_plus = Button(self.btn_row2_frame, text='+', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.add())
 
         # Pack the buttons
         self.btn_7.pack(side='left')
@@ -33,10 +45,10 @@ class CalcGUI:
         self.btn_plus.pack(side='left')
 
         # Create button's 4, 5, 6, -
-        self.btn_4 = Button(self.btn_row2_frame, text='4',font=('Verdana', 20), relief=GROOVE, border=0, width=5, padx=10, pady=10,command=lambda: self.OnClick(4))
-        self.btn_5 = Button(self.btn_row2_frame, text='5', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(5))
-        self.btn_6 = Button(self.btn_row2_frame, text='6', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(6))
-        self.btn_minus = Button(self.btn_row2_frame, text='-', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=self.subtract)
+        self.btn_4 = Button(self.btn_row3_frame, text='4',font=('Verdana', 20), relief=GROOVE, border=0, width=5, padx=10, pady=10,command=lambda: self.OnClick(4))
+        self.btn_5 = Button(self.btn_row3_frame, text='5', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(5))
+        self.btn_6 = Button(self.btn_row3_frame, text='6', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(6))
+        self.btn_minus = Button(self.btn_row3_frame, text='-', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=self.subtract)
 
         # Pack the buttons
         self.btn_4.pack(side='left')
@@ -45,10 +57,10 @@ class CalcGUI:
         self.btn_minus.pack(side='left')
 
         # Create button's 1, 2, 3, *
-        self.btn_1 = Button(self.btn_row3_frame, text='1', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick("1"))
-        self.btn_2 = Button(self.btn_row3_frame, text='2', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick(2))
-        self.btn_3 = Button(self.btn_row3_frame, text='3', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick(3))
-        self.btn_multiply = Button(self.btn_row3_frame, text='*', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.Multiply())
+        self.btn_1 = Button(self.btn_row4_frame, text='1', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick("1"))
+        self.btn_2 = Button(self.btn_row4_frame, text='2', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick(2))
+        self.btn_3 = Button(self.btn_row4_frame, text='3', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10, command=lambda: self.OnClick(3))
+        self.btn_multiply = Button(self.btn_row4_frame, text='*', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.Multiply())
 
         # Pack the buttons
         self.btn_1.pack(side='left')
@@ -57,10 +69,10 @@ class CalcGUI:
         self.btn_multiply.pack(side='left')
 
         # Create button's C, 0, =, /
-        self.btn_C = Button(self.btn_row4_frame, text='C', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.ButtonClear())
-        self.btn_zero = Button(self.btn_row4_frame, text='0', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(0))
-        self.btn_equal = Button(self.btn_row4_frame, text='=', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.ButtonEqual())
-        self.btn_divide = Button(self.btn_row4_frame, text='/', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.Divide())
+        self.btn_C = Button(self.btn_row5_frame, text='C', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.ButtonClear())
+        self.btn_zero = Button(self.btn_row5_frame, text='0', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.OnClick(0))
+        self.btn_equal = Button(self.btn_row5_frame, text='=', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.ButtonEqual())
+        self.btn_divide = Button(self.btn_row5_frame, text='\u00F7', font=('Verdana', 20), relief=GROOVE, border=0,width=5, padx=10, pady=10,command=lambda: self.Divide())
 
         # Pack the buttons
         self.btn_C.pack(side='left')
@@ -74,6 +86,7 @@ class CalcGUI:
         self.btn_row2_frame.pack()
         self.btn_row3_frame.pack()
         self.btn_row4_frame.pack()
+        self.btn_row5_frame.pack()
 
         tkinter.mainloop()
 
@@ -102,7 +115,7 @@ class CalcGUI:
     def Divide(self):
         self.first_num = self.calc_entry.get()
         self.calc_entry.delete(0, END)
-        self.math = '/'
+        self.math = '\u00F7'
         self.result = self.first_num + self.math
         self.calc_entry.insert(0, self.result)
 
@@ -114,6 +127,19 @@ class CalcGUI:
         self.result = self.first_num + self.math
         self.calc_entry.insert(0, self.result)
 
+    def Reciprocal(self):
+        pass
+
+    def num_sq(self):
+        self.first_num = self.calc_entry.get()
+        self.calc_entry.delete(0, END)
+        self.math = '\u00B2'
+        self.result = self.first_num + self.math
+        self.calc_entry.insert(0, self.result)
+
+    def sq_r(self):
+        pass
+
     def ButtonEqual(self):
         self.second_num = self.calc_entry.get()
         self.calc_entry.delete(0, END)
@@ -124,7 +150,6 @@ class CalcGUI:
             # Get the sum
             self.new = self.result[:self.result.find("+")]
             self.new_val = int(self.new)
-
             self.new_num = self.second_num.split("+")
 
             self.sum = 0
@@ -138,29 +163,39 @@ class CalcGUI:
         elif self.math == '-':
 
             self.new_num = self.second_num.split("-")
-
             self.int_list = [int(i) for i in self.new_num]
-
-            self.subtract = self.int_list[0] - sum(self.int_list[1:])
-
+            self.subtract = float(self.int_list[0] - sum(self.int_list[1:]))
             self.calc_entry.delete(0, END)
             self.calc_entry.insert(0, self.subtract)
 
         elif self.math == '*':
+
             self.new_num = self.second_num.split("*")
-
             self.mult_list = [int(i) for i in self.new_num]
-
             self.multiply = 1
-            for i in self.mult_list:
-                self.multiply = self.multiply * i
 
+            for i in self.mult_list:
+                self.multiply = float(self.multiply * i)
             self.calc_entry.insert(0, self.multiply)
 
-        elif self.math == '/':
-            self.sum = self.f_num / int(self.second_num)
-            self.calc_entry.insert(0, self.sum)
+        elif self.math == '\u00F7':
 
+            self.new_num = self.second_num.split('\u00F7')
+            self.div_list = [int(i) for i in self.new_num]
+            self.divide = float(self.div_list[0] / self.div_list[1])
+            self.calc_entry.insert(0, self.divide)
+
+        elif self.math == '\u00B2':
+            self.new_num = self.second_num.split("\u00B2")
+            if self.new_num.index(''):
+                i = self.new_num.index('')
+                del self.new_num[i]
+
+            self.sq_list = [int(i)**2 for i in self.new_num]
+
+            self.res = float(self.sq_list[0])
+
+            self.calc_entry.insert(0, self.res)
 
 if __name__ == '__main__':
 
