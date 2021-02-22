@@ -2,6 +2,7 @@ from tkinter import *
 import pygame
 from tkinter import filedialog
 
+
 class MP3:
     def __init__(self):
         # Create the main window for our MP3 Player
@@ -13,8 +14,9 @@ class MP3:
 
         # Create a function that adds songs
         def add_song():
-            self.song = filedialog.askopenfilename(initialdir='audio/', title='Choose a song', filetypes=(("mp3 Files", "*.mp3"),
-                                                                                                          ))
+            self.song = filedialog.askopenfilename(initialdir='audio/',
+                                                   title='Choose a song', filetypes=(("mp3 Files", "*.mp3"),
+                                                                                     ))
             self.song_box.insert(END, self.song)
 
         # Create Playlist Box
@@ -54,5 +56,6 @@ class MP3:
         self.add_songs.add_command(label='Add One Song to PlayList', command=add_song)
 
         self.main_window.mainloop()
+
 
 player = MP3()

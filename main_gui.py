@@ -41,6 +41,4 @@ class GUIApp:
         # Enter the tkinter mainloop
         tkinter.mainloop()
 
-
-
 my_gui = GUIApp()

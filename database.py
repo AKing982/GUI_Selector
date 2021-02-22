@@ -2,6 +2,7 @@ from tkinter import *
 import sqlite3
 import tkinter
 
+
 class DataGUI:
 
     def __init__(self):
@@ -49,7 +50,7 @@ class DataGUI:
         # Create a submit button
         self.submit_btn = Button(self.submit_frame, text='Submit Record', command=self.submit)
 
-         # Create a query button
+        # Create a query button
         self.query_btn = Button(self.query_frame,text='Show Records', command=self.query)
 
         # Pack the labels and the Buttons
