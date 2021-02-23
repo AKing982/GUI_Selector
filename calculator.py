@@ -18,7 +18,7 @@ class CalcGUI:
 
         # Create and pack widgets for the entry frame
         calc_label = Label(self.entry_frame, text='')
-        user_entry = Entry(self.entry_frame, width=10, borderwidth=5)
+        user_entry = Entry(self.entry_frame, width=90, borderwidth=5)
 
         # Pack the widget
         calc_label.pack(side='left')
@@ -32,8 +32,55 @@ class CalcGUI:
 
         # Pack the button widgets
         recip_btn.pack(side='left')
+        square_btn.pack(side='left')
         clear_btn.pack(side='left')
         division_btn.pack(side='left')
+
+        # Create and pack the widgets for the second btn row
+        Button_7 = Button(self.btn_row2_frame, text="7", padx=40, pady=40)
+        Button_8 = Button(self.btn_row2_frame, text="8", padx=40, pady=40)
+        Button_9 = Button(self.btn_row2_frame, text="9", padx=40, pady=40)
+        multi_btn = Button(self.btn_row2_frame, text="*", padx=40, pady=40)
+
+        # Pack the Button Widgets
+        Button_7.pack(side='left')
+        Button_8.pack(side='left')
+        Button_9.pack(side='left')
+        multi_btn.pack(side='left')
+
+        # Create and pack the widgets for the 3rd button row
+        Button_4 = Button(self.btn_row3_frame, text="4", padx=40, pady=40)
+        Button_5 = Button(self.btn_row3_frame, text="5", padx=40, pady=40)
+        Button_6 = Button(self.btn_row3_frame, text="6", padx=40, pady=40)
+        subtract_btn = Button(self.btn_row3_frame, text="-", padx=40, pady=40)
+
+        # Pack the Button Widgets
+        Button_4.pack(side='left')
+        Button_5.pack(side='left')
+        Button_6.pack(side='left')
+        subtract_btn.pack(side='left')
+
+        # Create and pack the widgets for the second btn row
+        Button_1 = Button(self.btn_row4_frame, text="1", padx=40, pady=40)
+        Button_2 = Button(self.btn_row4_frame, text="2", padx=40, pady=40)
+        Button_3 = Button(self.btn_row4_frame, text="3", padx=40, pady=40)
+        plus_btn = Button(self.btn_row4_frame, text="+", padx=40, pady=40)
+
+        # Pack the Button Widgets
+        Button_1.pack(side='left')
+        Button_2.pack(side='left')
+        Button_3.pack(side='left')
+        plus_btn.pack(side='left')
+
+        # Create and pack the widgets for the second btn row
+        Button_0 = Button(self.btn_row5_frame, text="0", padx=40, pady=40)
+        Button_dot = Button(self.btn_row5_frame, text=".", padx=40, pady=40)
+        Button_equals = Button(self.btn_row5_frame, text="=", padx=40, pady=40)
+
+        # Pack the Button Widgets
+        Button_0.pack(side='left')
+        Button_dot.pack(side='left')
+        Button_equals.pack(side='left')
 
         # Pack the Frames
         self.entry_frame.pack()
