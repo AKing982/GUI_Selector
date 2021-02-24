@@ -94,7 +94,7 @@ class CalcGUI:
         Button_dot = Button(self.btn_row5_frame, text=".", width=15, height=4,
                             relief=GROOVE, bd=1, bg="#D3D3D3")
         Button_clear = Button(self.btn_row5_frame, text="C", width=15, height=4,
-                              relief=GROOVE, bd=1, bg="#D3D3D3")
+                              relief=GROOVE, bd=1, bg="#D3D3D3", command=self.clear)
         Button_equals = Button(self.btn_row5_frame, text="=", width=15, height=4,
                                relief=GROOVE, bd=1, bg="#D3D3D3")
 
@@ -117,8 +117,18 @@ class CalcGUI:
         self.main_window.mainloop()
 
     def onClick(self, number):
+        # Get the current number from the user
+        current = self.user_entry.get()
+
+        # Delete any number already in the entry
         self.user_entry.delete(0, END)
-        self.user_entry.insert(0, number)
+
+        # Insert the current number
+        self.user_entry.insert(0, str(current) + str(number))
+
+    def clear(self):
+        # Delete the current entry
+        self.user_entry.delete(0, END)
 
 
 if __name__ == "__main__":
