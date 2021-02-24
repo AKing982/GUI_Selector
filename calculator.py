@@ -26,9 +26,9 @@ class CalcGUI:
 
         # Create and pack widgets for the first btn row
         self.recip_btn = Button(self.btn_row1_frame, text="1/x", width=15, height=4,
-                           relief=GROOVE, bd=1, bg="#D3D3D3", command=self.onClick)
+                           relief=GROOVE, bd=1, bg="#D3D3D3")
         self.square_btn= Button(self.btn_row1_frame, text="x\u00B2", width=15, height=4,
-                           relief=GROOVE, bd=1, bg="#D3D3D3", command=)
+                           relief=GROOVE, bd=1, bg="#D3D3D3")
         self.sqrt_btn = Button(self.btn_row1_frame, text=u"\u221A", width=15, height=4,
                           relief=GROOVE, bd=1, bg="#D3D3D3")
         self.division_btn = Button(self.btn_row1_frame, text="\u00F7", width=15, height=4,
@@ -41,10 +41,14 @@ class CalcGUI:
         self.division_btn.pack(side='left')
 
         # Create and pack the widgets for the second btn row
-        Button_7 = Button(self.btn_row2_frame, text="7", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_8 = Button(self.btn_row2_frame, text="8", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_9 = Button(self.btn_row2_frame, text="9", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        multi_btn = Button(self.btn_row2_frame, text="*", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
+        Button_7 = Button(self.btn_row2_frame, text="7", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(7))
+        Button_8 = Button(self.btn_row2_frame, text="8", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(8))
+        Button_9 = Button(self.btn_row2_frame, text="9", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(9))
+        multi_btn = Button(self.btn_row2_frame, text="*", width=15, height=4,
+                           relief=GROOVE, bd=1, bg="#D3D3D3")
 
         # Pack the Button Widgets
         Button_7.pack(side='left')
@@ -53,10 +57,14 @@ class CalcGUI:
         multi_btn.pack(side='left')
 
         # Create and pack the widgets for the 3rd button row
-        Button_4 = Button(self.btn_row3_frame, text="4", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_5 = Button(self.btn_row3_frame, text="5", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_6 = Button(self.btn_row3_frame, text="6", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        subtract_btn = Button(self.btn_row3_frame, text="-", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
+        Button_4 = Button(self.btn_row3_frame, text="4", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(4))
+        Button_5 = Button(self.btn_row3_frame, text="5", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(5))
+        Button_6 = Button(self.btn_row3_frame, text="6", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(6))
+        subtract_btn = Button(self.btn_row3_frame, text="-", width=15, height=4,
+                              relief=GROOVE, bd=1, bg="#D3D3D3")
 
         # Pack the Button Widgets
         Button_4.pack(side='left')
@@ -65,10 +73,14 @@ class CalcGUI:
         subtract_btn.pack(side='left')
 
         # Create and pack the widgets for the second btn row
-        Button_1 = Button(self.btn_row4_frame, text="1", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_2 = Button(self.btn_row4_frame, text="2", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_3 = Button(self.btn_row4_frame, text="3", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        plus_btn = Button(self.btn_row4_frame, text="+", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
+        Button_1 = Button(self.btn_row4_frame, text="1", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(1))
+        Button_2 = Button(self.btn_row4_frame, text="2", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(2))
+        Button_3 = Button(self.btn_row4_frame, text="3", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3", command=lambda: self.onClick(3))
+        plus_btn = Button(self.btn_row4_frame, text="+", width=15, height=4,
+                          relief=GROOVE, bd=1, bg="#D3D3D3")
 
         # Pack the Button Widgets
         Button_1.pack(side='left')
@@ -77,10 +89,14 @@ class CalcGUI:
         plus_btn.pack(side='left')
 
         # Create and pack the widgets for the second btn row
-        Button_0 = Button(self.btn_row5_frame, text="0", width=15, height=4, relief=GROOVE, bd=1,bg="#D3D3D3")
-        Button_dot = Button(self.btn_row5_frame, text=".", width=15, height=4,relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_clear = Button(self.btn_row5_frame, text="C", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
-        Button_equals = Button(self.btn_row5_frame, text="=", width=15, height=4, relief=GROOVE, bd=1, bg="#D3D3D3")
+        Button_0 = Button(self.btn_row5_frame, text="0", width=15, height=4,
+                          relief=GROOVE, bd=1,bg="#D3D3D3")
+        Button_dot = Button(self.btn_row5_frame, text=".", width=15, height=4,
+                            relief=GROOVE, bd=1, bg="#D3D3D3")
+        Button_clear = Button(self.btn_row5_frame, text="C", width=15, height=4,
+                              relief=GROOVE, bd=1, bg="#D3D3D3")
+        Button_equals = Button(self.btn_row5_frame, text="=", width=15, height=4,
+                               relief=GROOVE, bd=1, bg="#D3D3D3")
 
         # Pack the Button Widgets
         Button_0.pack(side='left')
@@ -100,7 +116,9 @@ class CalcGUI:
         # Enter the mainloop
         self.main_window.mainloop()
 
-    def onClick(self):
+    def onClick(self, number):
+        self.user_entry.delete(0, END)
+        self.user_entry.insert(0, number)
 
 
 if __name__ == "__main__":
