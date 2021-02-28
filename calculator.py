@@ -4,12 +4,13 @@ class CalcGUI:
     def __init__(self):
         # Create the main window for our calculator app
         self.main_window = Tk()
-        self.main_window.geometry('1024x785')
+        self.main_window.geometry('1024x950')
         self.main_window.title('Calculator')
         self.main_window.resizable(0, 0)
+        self.num = ""
 
         # Create the Five frames
-        entry_frame = Frame(self.main_window)
+        self.entry_frame = Frame(self.main_window)
         self.btn_row1_frame = Frame(self.main_window)
         self.btn_row2_frame = Frame(self.main_window)
         self.btn_row3_frame = Frame(self.main_window)
@@ -18,10 +19,14 @@ class CalcGUI:
         self.btn_row6_frame = Frame(self.main_window)
 
         # Create and pack widgets for the entry frame
-        self.user_entry = Entry(entry_frame, font=('arial', 22, 'bold'), bg="#eee", justify=RIGHT, width=90 ,borderwidth=0)
+        self.user_input = StringVar()
+        self.label = Label(self.entry_frame, textvariable=self.user_input,  height=4,
+                           width=15, font=("Verdana", 34), justify=RIGHT)
+        #self.user_entry = Entry(self.entry_frame, font=('arial', 22, 'bold'), bg="#eee", justify=RIGHT, width=90 ,borderwidth=0)
 
         # Pack the widget
-        self.user_entry.pack()
+        #self.user_entry.pack()
+        self.label.pack(expand=True, fill="both")
 
         # Create and pack widgets for the first btn row
         self.recip_btn = Button(self.btn_row1_frame, text="1/x",font=("Verdana", 22), width=15, height=4,
@@ -89,7 +94,7 @@ class CalcGUI:
 
         # Create and pack the widgets for the second btn row
         Button_0 = Button(self.btn_row5_frame, text="0", font=("Verdana", 22), width=15, height=4,
-                          relief=GROOVE, bd=1,bg="#D3D3D3", border=0)
+                          relief=GROOVE, bd=1,bg="#D3D3D3", border=0, command=lambda: self.onClick(0))
         Button_dot = Button(self.btn_row5_frame, text=".", font=("Verdana", 22), width=15, height=4,
                             relief=GROOVE, bd=1, bg="#D3D3D3", border=0)
         Button_clear = Button(self.btn_row5_frame, text="C",font=("Verdana", 22), width=15, height=4,
@@ -104,7 +109,7 @@ class CalcGUI:
         Button_equals.pack(side='left')
 
         # Pack the Frames
-        entry_frame.pack(expand=True, fill="both")
+        self.entry_frame.pack(expand=True, fill="both")
         self.btn_row1_frame.pack(expand=True, fill="both")
         self.btn_row2_frame.pack(expand=True, fill="both")
         self.btn_row3_frame.pack(expand=True, fill="both")
@@ -117,17 +122,13 @@ class CalcGUI:
 
     def onClick(self, number):
         # Get the current number from the user
-        current = self.user_entry.get()
-
-        # Delete any number already in the entry
-        self.user_entry.delete(0, END)
-
-        # Insert the current number
-        self.user_entry.insert(0, str(current) + str(number))
+        self.num = self.num + str(number)
+        self.user_input.set(self.num)
 
     def clear(self):
-        # Delete the current entry
-        self.user_entry.delete(0, END)
+        num = ""
+        self.user_input.set(num)
+
 
 
 if __name__ == "__main__":
